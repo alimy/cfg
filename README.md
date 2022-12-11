@@ -1,7 +1,11 @@
-## cfg
+### cfg
+[![Go](https://github.com/alimy/cfg/actions/workflows/go.yml/badge.svg)](https://github.com/alimy/cfg/actions/workflows/go.yml)
+[![GoDoc](https://godoc.org/github.com/alimy/cfg?status.svg)](https://pkg.go.dev/github.com/alimy/cfg)
+[![Sourcegraph](https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?logo=sourcegraph)](https://sourcegraph.com/github.com/alimy/cfg)
+
 A flexible features configure help library
 
-## Usage
+### Usage
 ```go
 package main
 
