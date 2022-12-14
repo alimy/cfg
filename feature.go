@@ -130,6 +130,24 @@ func (f *Features) CfgIn(actions Actions, defAct ...Fn) {
 	}
 }
 
+// CfgOn range actions to check item's expression is true then do the handle and return, defFn will handle
+// if all items are not matched,
+func (f *Features) CfgOn(actions Actions, defAct ...Fn) {
+	for expression, handle := range actions {
+		if f.CfgIf(expression) && handle != nil {
+			handle()
+			return
+		}
+	}
+	if len(defAct) > 0 {
+		for _, handle := range defAct {
+			if handle != nil {
+				handle()
+			}
+		}
+	}
+}
+
 // CfgBe check expression is true then do the handle. if expression just have a string like
 // `Sms` is mean `Sms` whether defined in suite feature settings. expression like
 // `Sms = SmsJuhe` is mean whether `Sms` define in suite feature settings and value

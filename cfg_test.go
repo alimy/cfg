@@ -79,4 +79,38 @@ func TestCfg(t *testing.T) {
 	if m1 || m2 || !m3 {
 		t.Errorf(`In("Zinc", "MySQL", ...) not correct -> m1: %t m2:%t m3:%t`, m1, m2, m3)
 	}
+
+	m1 = false
+	m2 = false
+	m3 = false
+	On(Actions{
+		"AliOSS": func() {
+			m1 = true
+		},
+		"Localoss": func() {
+			m2 = true
+		},
+	}, func() {
+		m3 = true
+	})
+	if !m1 || m2 || m3 {
+		t.Errorf(`On("AliOSS", "Localoss", ...) not correct -> m1: %t m2:%t m3:%t`, m1, m2, m3)
+	}
+
+	m1 = false
+	m2 = false
+	m3 = false
+	On(Actions{
+		"COS": func() {
+			m1 = true
+		},
+		"Localoss": func() {
+			m2 = true
+		},
+	}, func() {
+		m3 = true
+	})
+	if m1 || m2 || !m3 {
+		t.Errorf(`On("AliOSS", "Localoss", ...) not correct -> m1: %t m2:%t m3:%t`, m1, m2, m3)
+	}
 }
