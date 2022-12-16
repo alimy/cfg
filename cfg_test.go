@@ -25,9 +25,15 @@ func TestCfg(t *testing.T) {
 		t.Error(`want If("Sms") == true but not`)
 	}
 
-	if v, exist := As("Sms"); exist && v != "SmsJuhe" {
-		t.Errorf(`want As("Sms") == "SmsJuhe", true but got: "%s", "%t"`, v, exist)
+	if v, exist := Val("Sms"); exist && v != "SmsJuhe" {
+		t.Errorf(`want Val("Sms") == "SmsJuhe", true but got: "%s", "%t"`, v, exist)
 	}
+
+	As("sms", func(v string) {
+		if v != "SmsJuhe" {
+			t.Errorf(`want As("Sms") == "SmsJuhe", true but got: "%s"`, v)
+		}
+	})
 
 	matched := false
 	Be("Alipay", func() {

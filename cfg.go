@@ -14,7 +14,10 @@ var (
 	UseDefault = _features.UseDefault
 
 	// As alias of Features.Cfg func
-	As = _features.Cfg
+	Val = _features.Cfg
+
+	// As alias of Features.CfgAs func
+	As = _features.CfgAs
 
 	// If alias of Features.CfgIf func
 	If = _features.CfgIf
@@ -39,7 +42,8 @@ func Initial(suites map[string][]string, kv map[string]string) {
 		// must re-assign variable below
 		Use = _features.Use
 		UseDefault = _features.UseDefault
-		As = _features.Cfg
+		Val = _features.Cfg
+		As = _features.CfgAs
 		If = _features.CfgIf
 		In = _features.CfgIn
 		On = _features.CfgOn

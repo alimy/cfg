@@ -95,6 +95,16 @@ func (f *Features) Cfg(key string) (string, bool) {
 	return value, exist
 }
 
+// Cfg do the handle with param of the value by key
+func (f *Features) CfgAs(key string, handle func(v string)) {
+	if handle != nil {
+		key = strings.ToLower(key)
+		if v, exist := f.features[key]; exist {
+			handle(v)
+		}
+	}
+}
+
 // CfgIf check expression is true. if expression just have a string like
 // `Sms` is mean `Sms` whether define in suite feature settings. expression like
 // `Sms = SmsJuhe` is mean whether `Sms` define in suite feature settings and value
