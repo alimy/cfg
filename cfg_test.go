@@ -25,6 +25,18 @@ func TestCfg(t *testing.T) {
 		t.Error(`want If("Sms") == true but not`)
 	}
 
+	if All("Sms", "Alipay", "Zinc", "LogFile") {
+		t.Error(`want All("Sms", "Alipay", "Zinc", "LogFile") == false but not`)
+	}
+
+	if !Any("Sms", "Alipay", "Zinc") {
+		t.Error(`want Any("Sms", "Alipay", "Zinc", "LogFile") == true but not`)
+	}
+
+	if !Any("SmsNo", "Alipays", "Zinc", "LogFile") {
+		t.Error(`want Any("SmsNo", "Alipays", "Zinc", "LogFile") == true but not`)
+	}
+
 	if v, exist := Val("Sms"); exist && v != "SmsJuhe" {
 		t.Errorf(`want Val("Sms") == "SmsJuhe", true but got: "%s", "%t"`, v, exist)
 	}

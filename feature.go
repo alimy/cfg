@@ -121,6 +121,31 @@ func (f *Features) CfgIf(expression string) bool {
 	return false
 }
 
+// CfgAll check all expressions is true.
+// Return false if any one expression in expresssions is false or expressions is empty.
+func (f *Features) CfgAll(expressions ...string) bool {
+	if len(expressions) == 0 {
+		return false
+	}
+	for _, exp := range expressions {
+		if !f.CfgIf(exp) {
+			return false
+		}
+	}
+	return true
+}
+
+// CfgAny check any expressions is true.
+// Return false if all expressions is false or expressions is empty.
+func (f *Features) CfgAny(expressions ...string) bool {
+	for _, exp := range expressions {
+		if f.CfgIf(exp) {
+			return true
+		}
+	}
+	return false
+}
+
 // CfgIn range actions to check item's expression is true then do the handle, defFn will handle
 // if all items are not matched,
 func (f *Features) CfgIn(actions Actions, defAct ...Fn) {

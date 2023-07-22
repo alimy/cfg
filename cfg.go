@@ -22,6 +22,12 @@ var (
 	// If alias of Features.CfgIf func
 	If = _features.CfgIf
 
+	// If alias of Features.CfgAll func
+	All = _features.CfgAll
+
+	// If alias of Features.CfgAny func
+	Any = _features.CfgAny
+
 	// In alias of Features.CfgIn func
 	In = _features.CfgIn
 
@@ -45,6 +51,8 @@ func Initial(suites map[string][]string, kv map[string]string) {
 		Val = _features.Cfg
 		As = _features.CfgAs
 		If = _features.CfgIf
+		All = _features.CfgAll
+		Any = _features.CfgAny
 		In = _features.CfgIn
 		On = _features.CfgOn
 		Be = _features.CfgBe
